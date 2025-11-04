@@ -1,0 +1,41 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Archivos de entorno virtual (si usas uno)
+venv/
+env/
+.venv/
+
+# Archivos de configuración del editor
+.vscode/
+.idea/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Base de datos local
+db.sqlite3
+
+# Archivos de migraciones compiladas (mantén las migraciones en sí)
+*.mo
+
+# Archivos comprimidos o temporales
+*.zip
+*.tar
+*.gz
+
+# Archivos de logs
+*.log
+
+# Archivos de caché de Django
+staticfiles/
+media/
+
+# Archivos generados por tests
+coverage/
+htmlcov/

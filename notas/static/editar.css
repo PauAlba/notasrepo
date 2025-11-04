@@ -1,0 +1,199 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg, #f4f7fb 0%, #eaf0fb 100%);
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  padding: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* contenedor central */
+.main-wrap {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Cabecera general */
+.page-title {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.page-title h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f1724;
+  margin-bottom: 6px;
+}
+.page-title p {
+  color: #556270;
+  font-size: 0.95rem;
+}
+
+/* Tarjeta de nota original */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(12, 18, 30, 0.06);
+  border: 1px solid rgba(15,23,36,0.04);
+  margin-bottom: 32px; /* separación con el formulario */
+}
+
+/* Encabezado dentro de la tarjeta */
+.card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0b1220;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+/* Contenido de la nota original */
+.note-content {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #2b2f36;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* separación entre líneas */
+}
+
+/* Subtítulos "Título" y "Contenido" */
+.note-content p strong {
+  display: block;
+  color: #1e3a8a;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+/* Para que los <br> no creen demasiado espacio */
+.note-content br {
+  line-height: 0;
+}
+
+/* Formulario / editor */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Fieldset con estilo */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Legend como título */
+legend h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0b1220;
+  margin-bottom: 6px;
+}
+
+/* Inputs y textarea */
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  background: #fcfdff;
+  font-size: 0.98rem;
+  color: #111827;
+  outline: none;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .12s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #2a4dff;
+  box-shadow: 0 6px 18px rgba(42,77,255,0.12);
+  transform: translateY(-1px);
+}
+
+textarea { min-height: 160px; resize: vertical; }
+
+/* Mensajes de error */
+.error {
+  color: #b91c1c;
+  background: #fff5f5;
+  border: 1px solid rgba(185,28,28,0.12);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Botones */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+button[type="submit"] {
+  background: linear-gradient(180deg,#2a4dff,#1c36c9);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(42,77,255,0.18);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+button[type="submit"]:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 16px 36px rgba(42,77,255,0.22); 
+}
+
+a.cancelar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  color: #374151;
+  background: #fff;
+  font-weight: 600;
+  transition: background .12s ease, transform .12s ease;
+}
+
+a.cancelar:hover { 
+  background: #fbfbfe; 
+}
+
+/* Pequeñas utilidades */
+.kv {
+  font-size: 0.92rem;
+  color: #475569;
+}

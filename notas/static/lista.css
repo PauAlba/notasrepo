@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f0f3f8, #dfe9f3);
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+}
+
+/* Título de la página */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1c36c9;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #2a4dff, #8093ff);
+  /* -webkit-background-clip: text; */
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(42,77,255,0.1);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Lista de notas */
+ul {
+  list-style: none;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+li {
+  border-bottom: 1px solid #eee;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/* Enlaces a las notas */
+li a {
+  display: block;
+  padding: 18px 24px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+li a:hover {
+  background: #e9efff;
+  color: #2a4dff;
+}
+
+a.crear-btn {
+  margin-top: 80px;
+  display: inline-block;
+  background: #2a4dff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(42, 77, 255, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+a.crear-btn:hover {
+  background: #1c36c9;
+}
+
+/* Mensaje si no hay notas */
+p {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+  color: #555;
+}

@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f0f3f8, #dfe9f3);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #333;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: #444;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 40px;
+}
+
+/* Contenedor de botones */
+button {
+  background: #2a4dff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(42, 77, 255, 0.3);
+}
+
+button:hover {
+  background: #1c36c9;
+}
+
+/* Estilo especial para el botón de eliminar */
+button:first-of-type {
+  background: #ff4d4f;
+  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.3);
+}
+
+button:first-of-type:hover {
+  background: #d9363e;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+
+  button {
+    width: 100%;
+    margin: 8px 0;
+  }
+}

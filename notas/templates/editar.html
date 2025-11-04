@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Detalle de la nota</title>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'editar.css' %}">
+  </head>
+  <body>
+    <div class="card">
+      <h2>Nota original</h2>
+      <div class="note-content">
+        <p><strong>Título:</strong></p>
+        <p>{{ nota.titulo }}</p>
+        <br>
+        <p><strong>Contenido:</strong></p>
+        <p>{{ nota.contenido }}</p>
+      </div>
+    </div>
+
+    <h1>Edicion</h1>
+    <form action="{% url 'notas:update' nota.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>Editar nota</h1></legend>
+
+        {% if error %}
+            <p><strong>{{ error }}</strong></p>
+        {% endif %}
+
+        <label for="titulo">Título:</label>
+        <input 
+            type="text" 
+            name="titulo" 
+            id="titulo" 
+            value="{{ nota.titulo }}" 
+            required
+        ><br><br>
+
+        <label for="contenido">Contenido:</label>
+        <textarea 
+            name="contenido" 
+            id="contenido" 
+            required
+        >{{ nota.contenido }}</textarea><br><br>
+
+        <button type="submit">Guardar cambios</button>
+        <a href="{% url 'notas:lista' %}" class="cancelar">Cancelar</a>
+    </fieldset>
+</form>
+</body>
+</html>
