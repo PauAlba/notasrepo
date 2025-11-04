@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesión</title>
-    <!-- <link rel="stylesheet" href="{% static 'login.css' %}"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 <body>
-    <h2>Ingresa tus datos para responder las preguntas</h2>
+    <h2>Ingresa tus datos</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Iniciar sesión</button>
     </form>
-    <!-- <p>Usuario o contraseña incorrectos, intente de nuevo.</p> -->
+    {% if form.errors %}
+    <p>Usuario o contrasena incorrectos, intente de nuevo</p>
+    {% endif %}
 </body>
 </html>

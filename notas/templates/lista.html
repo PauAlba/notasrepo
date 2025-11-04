@@ -9,12 +9,6 @@
   </head>
 
   <body>
-    <div style="text-align: right; padding: 10px;">
-      <form action="{% url 'logout' %}" method="post" style="display: inline;">
-        {% csrf_token %}
-        <button type="submit">Cerrar sesión</button>
-      </form>
-    </div>
     <h1>Listado de notas</h1>
     {% if lista_notas %}
     <ul>
@@ -22,9 +16,16 @@
       <li><a href="{% url 'notas:detail' nota.id %}">{{ nota.titulo }}</a></li>
       {% endfor %}
     </ul>
-    <a href="{% url 'notas:crear' %}" class="crear-btn">Crear una pregunta</a>
     {% else %}
       <p>No se encontraron notas</p>
     {% endif %}
+    <a href="{% url 'notas:crear' %}" class="crear-btn">Crear una pregunta</a>
+    <div style="text-align: right; padding: 10px;">
+      <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+      </form>
+    </div>
+
   </body>
 </html>

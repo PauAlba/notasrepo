@@ -13,7 +13,6 @@ body {
   gap: 24px;
 }
 
-/* contenedor central */
 .main-wrap {
   width: 100%;
   max-width: 1100px;
@@ -23,7 +22,6 @@ body {
   align-items: start;
 }
 
-/* Cabecera general */
 .page-title {
   grid-column: 1 / -1;
   text-align: center;
@@ -40,7 +38,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Tarjeta de nota original */
 .card {
   background: #fff;
   border-radius: 14px;
@@ -50,7 +47,6 @@ body {
   margin-bottom: 32px; /* separación con el formulario */
 }
 
-/* Encabezado dentro de la tarjeta */
 .card h2 {
   font-size: 1.2rem;
   font-weight: 700;
@@ -59,7 +55,6 @@ body {
   text-align: center;
 }
 
-/* Contenido de la nota original */
 .note-content {
   background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
   padding: 20px;
@@ -73,7 +68,6 @@ body {
   gap: 8px; /* separación entre líneas */
 }
 
-/* Subtítulos "Título" y "Contenido" */
 .note-content p strong {
   display: block;
   color: #1e3a8a;
@@ -81,26 +75,22 @@ body {
   margin-bottom: 2px;
 }
 
-/* Para que los <br> no creen demasiado espacio */
 .note-content br {
   line-height: 0;
 }
 
-/* Formulario / editor */
 form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Fieldset con estilo */
 fieldset {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-/* Legend como título */
 legend h1 {
   font-size: 1.15rem;
   font-weight: 700;
@@ -108,7 +98,6 @@ legend h1 {
   margin-bottom: 6px;
 }
 
-/* Inputs y textarea */
 label {
   display: block;
   font-weight: 600;
@@ -149,7 +138,6 @@ textarea { min-height: 160px; resize: vertical; }
   font-weight: 600;
 }
 
-/* Botones */
 .form-actions {
   display: flex;
   gap: 12px;
@@ -192,7 +180,6 @@ a.cancelar:hover {
   background: #fbfbfe; 
 }
 
-/* Pequeñas utilidades */
 .kv {
   font-size: 0.92rem;
   color: #475569;

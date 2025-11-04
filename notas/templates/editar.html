@@ -8,6 +8,7 @@
       <link rel="stylesheet" href="{% static 'editar.css' %}">
   </head>
   <body>
+    <h1>Edicion</h1>
     <div class="card">
       <h2>Nota original</h2>
       <div class="note-content">
@@ -19,16 +20,17 @@
       </div>
     </div>
 
-    <h1>Edicion</h1>
     <form method="post">
-    {% csrf_token %}
-    <fieldset>
-        <legend><h1>Editar nota</h1></legend>
-        {{ form.as_p }}
+      {% csrf_token %}
+      <fieldset>
+          <legend><h1>Editar nota</h1></legend>
+          {{ form.as_p }}
 
-        <button type="submit">Guardar cambios</button>
-        <a href="{% url 'notas:lista' %}" class="cancelar">Cancelar</a>
-    </fieldset>
-</form>
+          <button type="submit">Guardar cambios</button>
+          <a href="{% url 'notas:lista' %}" class="cancelar">Cancelar</a>
+      </fieldset>
+    </form>
+
+
 </body>
 </html>

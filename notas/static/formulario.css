@@ -16,7 +16,6 @@ body {
   color: #333;
 }
 
-/* Título */
 h2 {
   font-size: 1.8rem;
   color: #1a1a1a;
@@ -24,7 +23,6 @@ h2 {
   text-align: center;
 }
 
-/* Contenedor del formulario */
 form {
   background: #fff;
   padding: 30px 40px;
@@ -36,14 +34,12 @@ form {
   flex-direction: column;
 }
 
-/* Labels */
 label {
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
 }
 
-/* Inputs y textarea */
 input[type="text"],
 textarea {
   width: 100%;
@@ -63,13 +59,11 @@ textarea:focus {
   box-shadow: 0 0 6px rgba(42, 77, 255, 0.3);
 }
 
-/* Textarea */
 textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* Botón */
 button {
   background: #2a4dff;
   color: white;
@@ -85,19 +79,4 @@ button {
 
 button:hover {
   background: #1c36c9;
-}
-
-/* Adaptable a pantallas pequeñas */
-@media (max-width: 600px) {
-  body {
-    padding: 20px;
-  }
-
-  form {
-    padding: 25px;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
 }

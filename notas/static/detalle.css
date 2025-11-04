@@ -6,78 +6,76 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f0f3f8, #dfe9f3);
+  background: linear-gradient(135deg, #f8f9fb, #e0e7f1);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px;
+  justify-content: flex-start;
+  padding: 40px 20px;
   color: #333;
 }
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
+  font-weight: 600;
   color: #1a1a1a;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
 h2 {
   font-size: 1.2rem;
-  color: #444;
-  background: white;
+  color: #333;
+  background: #ffffffcc;
   padding: 20px 30px;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   max-width: 700px;
   line-height: 1.6;
   text-align: justify;
   margin-bottom: 40px;
+  backdrop-filter: blur(8px);
 }
 
-/* Contenedor de botones */
+button, .btn-link {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 28px;
+  margin: 8px 10px 0 0;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
 button {
   background: #2a4dff;
   color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0 40px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(42, 77, 255, 0.3);
+  box-shadow: 0 6px 15px rgba(42, 77, 255, 0.3);
 }
 
 button:hover {
   background: #1c36c9;
 }
 
-/* Estilo especial para el botón de eliminar */
-button:first-of-type {
+button.delete {
   background: #ff4d4f;
-  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.3);
+  box-shadow: 0 6px 15px rgba(255, 77, 79, 0.3);
 }
 
-button:first-of-type:hover {
+button.delete:hover {
   background: #d9363e;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  body {
-    padding: 20px;
-  }
+.btn-link {
+  background: #e0e0e0;
+  color: #555;
+}
 
-  h2 {
-    font-size: 1rem;
-    padding: 15px 20px;
-  }
-
-  button {
-    width: 100%;
-    margin: 8px 0;
-  }
+.btn-link:hover {
+  background: #cfcfcf;
 }
