@@ -46,7 +46,7 @@ class EditarView(LoginRequiredMixin, UpdateView):
 class EliminarView(LoginRequiredMixin, DeleteView):
     model = Nota
     success_url = reverse_lazy('notas:lista')
-    template_name = "detalle.html"  # usamos la misma plantilla que ya tiene el botón de eliminar
+    template_name = "detalle.html"
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
