@@ -8,14 +8,20 @@
       <link rel="stylesheet" href="{% static 'detalle.css' %}">
   </head>
   <body>
+    <div style="text-align: right; padding: 10px;">
+      <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+      </form>
+    </div>
     <h1>Detalle de la nota</h1>
     <h1>{{ nota.titulo }}</h1>
     <h2>{{nota.contenido}}</h1>
-        <form action="{% url 'notas:delete' nota.id %}" method = "POST" style="display:inline;">
+        <form action="{% url 'notas:eliminar' nota.id %}" method="POST" style="display:inline;">
             {% csrf_token %}
-            <button type = "submit" >Delete</button>
+            <button type="submit">Delete</button>
         </form>
       
-      <button> <a href="{% url 'notas:editarForms' nota.id %}">Editar</a></button>
+      <button><a href="{% url 'notas:editar' nota.id %}">Editar</a></button>
   </body>
 </html>

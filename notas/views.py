@@ -1,91 +1,55 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Nota
-from django.urls import reverse
 from django.db.models import F
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-
-
-
-# Create your tests here.
-def lista(request):
-
-    lista_notas = Nota.objects.order_by("fecha_publicacion")
-    contexto = {"lista_notas": lista_notas}
-    return render(request, "lista.html", contexto)
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 class ListaView(LoginRequiredMixin, generic.ListView):
     model = Nota
-    template_object_name = "lista_notas"
+    template_name = "lista.html"
+    context_object_name = "lista_notas"
 
-    #con esto de abajo ya no debe de permitir al usuario editar o eliminar notas de otros segun
     def get_queryset(self):
-        print(self.request.user)
         return Nota.objects.order_by("-fecha_publicacion")
 
-# Ver el detalle de una pregunta
-def detail(request, nota_id):
-  nota = get_object_or_404(Nota, pk=nota_id)
-  return render(request, "detalle.html", {"nota":nota})
-
 class DetailView(LoginRequiredMixin, generic.DetailView):
-    model: Nota 
+    model = Nota
     template_name = "detalle.html"
 
-def formulario(request):
-    return render(request, 'formulario.html')
-
-class FormularioView(LoginRequiredMixin, generic.FormView):
-    model = Nota 
+class CrearView(LoginRequiredMixin, CreateView):
+    model = Nota
     template_name = "formulario.html"
+    fields = ['titulo', 'contenido']
+    success_url = reverse_lazy('notas:lista')
+    
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
-def editarForms(request, nota_id):
-    nota = get_object_or_404(Nota, pk=nota_id)
-    return render(request,'editar.html', {"nota": nota})
-
-class FormularioView(LoginRequiredMixin, generic.FormView):
-    model = Nota 
+class EditarView(LoginRequiredMixin, UpdateView):
+    model = Nota
     template_name = "editar.html"
+    fields = ['titulo', 'contenido']
+    success_url = reverse_lazy('notas:lista')
 
-@login_required
-def create(request):
-    if request.method == "POST":
-        titulo = request.POST.get("titulo")
-        contenido = request.POST.get("contenido")
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.usuario != self.request.user:
+            return redirect('notas:lista')
+        return super().dispatch(request, *args, **kwargs)
 
-        Nota.objects.create(titulo=titulo, contenido=contenido)
-        return redirect("notas:lista")  
-    return render(request, "formulario.html")
+class EliminarView(LoginRequiredMixin, DeleteView):
+    model = Nota
+    success_url = reverse_lazy('notas:lista')
+    template_name = "detalle.html"  # usamos la misma plantilla que ya tiene el botón de eliminar
 
-@login_required
-def delete(request, nota_id):
-    nota = get_object_or_404(Nota, pk=nota_id)
-    if request.method == "POST":
-        nota.delete()
-        return redirect("notas:lista")
-    return HttpResponseRedirect(reverse("notas:lista"))
-
-@login_required
-def update(request, nota_id):
-    nota = get_object_or_404(Nota, pk=nota_id)
-
-    if request.method == "POST":
-        titulo = request.POST.get("titulo", "").strip()
-        contenido = request.POST.get("contenido", "").strip()
-
-        if not titulo:
-            return render(request, "notas/update.html", {
-                "nota": nota,
-                "error": "El título es obligatorio.",
-                "titulo": titulo,
-                "contenido": contenido,
-            })
-
-        nota.titulo = titulo
-        nota.contenido = contenido
-        nota.save()
-
-        return HttpResponseRedirect(reverse("notas:lista"))
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.usuario != self.request.user:
+            return redirect('notas:lista')
+        return super().dispatch(request, *args, **kwargs)

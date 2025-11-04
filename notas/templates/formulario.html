@@ -10,13 +10,9 @@
 <body>
         <h2>Crear nueva nota</h2>
 
-    <form action="{% url 'notas:create'%}" method="POST">
+    <form method="POST">
     {% csrf_token %}
-      <label for="titulo">Título:</label>
-      <input type="text" name="titulo" id="titulo" required><br><br>
-
-      <label for="contenido">Contenido:</label>
-      <textarea name="contenido" id="contenido" required></textarea><br><br>
+    {{ form.as_p }}
 
       <button type="submit">Publicar</button>
     </form>
