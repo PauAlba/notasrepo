@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from .models import Nota
 from django.db.models import F
 from django.shortcuts import render, redirect
@@ -15,11 +15,18 @@ class ListaView(LoginRequiredMixin, generic.ListView):
     context_object_name = "lista_notas"
 
     def get_queryset(self):
-        return Nota.objects.order_by("-fecha_publicacion")
+        return Nota.objects.filter(usuario=self.request.user).order_by("-fecha_publicacion")
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Nota
     template_name = "detalle.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        nota = self.get_object()
+        if nota.usuario != self.request.user:
+            # Aquí hacemos redirect a la lista
+            return redirect('notas:lista')
+        return super().dispatch(request, *args, **kwargs)
 
 class CrearView(LoginRequiredMixin, CreateView):
     model = Nota
